@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interprete</title>
+    <link rel="icon" href="{{ url_for('static', filename='assets/upwork-logo-24.ico') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/body.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/menu.css') }}"/>
+</head>
+<body>
+    <div class="menu">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <p id="automaton">Interprete</p>
+                <p id="pushdown" class="pila">web</p></a>
+            <div class="nav-links">
+                
+                <ul>
+                    <li id="languages" class="dropdown">
+                        <a href="#">Languages</a>
+                        <div id="language-dropdown" class="language-dropdown">
+                            <ul class="language-list">
+                                <li><a href="#" data-lang="en">English</a></li>
+                                <li><a href="#" data-lang="es">Spanish</a></li>
+                                <li><a href="#" data-lang="jp">Japanese</a></li>
+                            </ul>
+                        </div>
+                    </li>                        
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="content">
+        <div class="text_input">
+            <div class="write">
+                <!-- <h3>editor de texto</h3> -->
+            </div>
+            <div class="console">
+                <!-- <h3>consola de respuesta</h3> -->
+            </div>
+            <div class="buttons">
+                <div class="buttondiv">
+                    <button type="button" id="verificar" class="button"> Ejecutar </button>
+                </div>
+                <div class="buttondiv">
+                    <button type="button" id="verificar" class="button"> Validar </button>
+                </div>
+            </div>
+        </div>
+        <div class="text_example">
+            <!-- <h3>ESPACIO PARA MOSTRAR LA SINTAXIS DEL LENGUAJE</h3> -->
+        </div>
+    </div>
+</body>
+</html>
