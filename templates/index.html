@@ -11,8 +11,8 @@
     <div class="menu">
         <nav class="navbar">
             <a href="#" class="logo">
-                <p id="automaton">Interprete</p>
-                <p id="pushdown" class="pila">web</p></a>
+                <p id="interpreter">Interpreter</p>
+                <p id="web" class="pila">web</p></a>
             <div class="nav-links">
                 
                 <ul>
@@ -40,10 +40,10 @@
             </div>
             <div class="buttons">
                 <div class="buttondiv">
-                    <button type="button" id="verificar" class="button"> Ejecutar </button>
+                    <button type="button" id="verify" class="button"> Execute </button>
                 </div>
                 <div class="buttondiv">
-                    <button type="button" id="verificar" class="button"> Validar </button>
+                    <button type="button" id="validate" class="button"> Validate </button>
                 </div>
             </div>
         </div>
@@ -51,5 +51,6 @@
             <!-- <h3>ESPACIO PARA MOSTRAR LA SINTAXIS DEL LENGUAJE</h3> -->
         </div>
     </div>
+    <script src="{{ url_for('static', filename='scripts/translations.js') }}"></script>
 </body>
 </html>

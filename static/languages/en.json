@@ -1,0 +1,13 @@
+{
+    "title": "Web Interpreter",
+    "languages": "Languages",
+    "languages-option": {
+        "en": "English",
+        "es": "Spanish",
+        "jp": "Japanese"
+    },
+    "interpreter": "Interpreter",
+    "web": "Web",
+    "verify": "Execute",
+    "validate": "Validate"
+}
