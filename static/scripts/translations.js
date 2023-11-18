@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.querySelector('#languages a').textContent = data.languages;
                 document.querySelector('#interpreter').textContent = data.interpreter;
                 document.querySelector('#web').textContent = data.web;
-                document.querySelector('#verify').textContent = data.verify;
+                document.querySelector('#execute').textContent = data.execute;
                 document.querySelector('#validate').textContent = data.validate;
 
                 const languageOptions = data["languages-option"];
@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     const newLang = link.getAttribute('data-lang');
                     link.textContent = languageOptions[newLang];
                 });
+
+                const languageChangeEvent = new CustomEvent('languageChange', { detail: lang });
+                document.dispatchEvent(languageChangeEvent);
             });
     }
 

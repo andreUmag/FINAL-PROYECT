@@ -8,6 +8,6 @@
     },
     "interpreter": "Intérprete",
     "web": "Web",
-    "verify": "Ejecutar",
+    "execute": "Ejecutar",
     "validate": "Validar"
 }

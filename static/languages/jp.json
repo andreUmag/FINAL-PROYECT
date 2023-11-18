@@ -8,6 +8,6 @@
     },
     "interpreter": "インタプリタ",
     "web": "ウェブ",
-    "verify": "実行",
+    "execute": "実行",
     "validate": "検証する"
 }
