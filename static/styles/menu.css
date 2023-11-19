@@ -45,8 +45,7 @@
   margin: 0 25px;
 }
 
-.navbar .nav-links ul li a {
-  color: #05F29B;
+.navbar .nav-links ul li {
   font-weight: 600;
 }
 

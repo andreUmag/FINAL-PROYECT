@@ -41,7 +41,9 @@ body {
   padding: 15px;
   color: white;
   margin-bottom: 5px;
-  line-height: 2;
+  line-height: 1.4;
+  font-size: 15px;
+  font-family: "Menlo", "Monaco", monospace;
 }
 
 .write {
