@@ -1,96 +1,93 @@
-.menu{
-    height: 50px;
-    margin-bottom: 20px;
+.menu {
+  height: 50px;
+  margin-bottom: 20px;
 }
 
-.navbar{
-    position: absolute;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
+.navbar {
+  position: absolute;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.navbar a{
-    color: rgb(66, 56, 56);
+.navbar a {
+  color: rgb(66, 56, 56);
 }
 
-.navbar .logo{
-    color:  #075933;
-    font-size: 2em;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    margin-left: 10px; 
+.navbar .logo {
+  color: #075933;
+  font-size: 2em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 }
 
 .navbar .logo p {
-    margin: 0;
+  margin: 0;
 }
 
 .navbar .logo p.pila {
-    color: #0DA65F;
-    font-size: 15px;
-    margin-left: 4px;
-    margin-top: 20px;
+  color: #0da65f;
+  font-size: 15px;
+  margin-left: 4px;
+  margin-top: 20px;
 }
 
-.navbar .nav-links ul{
-    display: flex;
+.navbar .nav-links ul {
+  display: flex;
 }
 
-.navbar .nav-links ul li{
-    margin:  0 25px;
+.navbar .nav-links ul li {
+  margin: 0 25px;
 }
 
-.navbar .nav-links ul li a{
-    color: #075933;
-    font-weight: 600;
+.navbar .nav-links ul li a {
+  color: #075933;
+  font-weight: 600;
 }
 
 .navbar .velocity {
-    display: flex;
-    justify-content: start;
-    margin-right: 0px;
-
+  display: flex;
+  justify-content: start;
+  margin-right: 0px;
 }
 
 .language-dropdown {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    border-radius: 5px;
-    max-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    right: 0;
-    z-index: 9999;
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 5px;
+  max-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0;
+  z-index: 9999;
 }
 
 .language-dropdown ul {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .language-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .language-list li {
-    padding: 10px;
-    text-align: center;
+  padding: 10px;
+  text-align: center;
 }
 
 .language-list li a {
-    text-decoration: none;
-    color: #333;
-    display: block;
+  text-decoration: none;
+  color: #333;
+  display: block;
 }
 
 .dropdown:hover .language-dropdown {
-    display: block;
+  display: block;
 }
-
-

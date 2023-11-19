@@ -1,62 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Interprete</title>
-    <link rel="icon" href="{{ url_for('static', filename='assets/upwork-logo-24.ico') }}"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/body.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/menu.css') }}"/>
-</head>
-<body>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='assets/upwork-logo-24.ico') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/body.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/menu.css') }}"
+    />
+  </head>
+  <body>
     <div class="menu">
-        <nav class="navbar">
-            <a href="#" class="logo">
-                <p id="interpreter">Interpreter</p>
-                <p id="web" class="pila">web</p></a>
-            <div class="nav-links">
-                
-                <ul>
-                    <li id="languages" class="dropdown">
-                        <a href="#">Languages</a>
-                        <div id="language-dropdown" class="language-dropdown">
-                            <ul class="language-list">
-                                <li><a href="#" data-lang="en">English</a></li>
-                                <li><a href="#" data-lang="es">Spanish</a></li>
-                                <li><a href="#" data-lang="jp">Japanese</a></li>
-                            </ul>
-                        </div>
-                    </li>                        
+      <nav class="navbar">
+        <a href="#" class="logo">
+          <p id="interpreter">Interpreter</p>
+          <p id="web" class="pila">web</p></a
+        >
+        <div class="nav-links">
+          <ul>
+            <li id="languages" class="dropdown">
+              <a href="#">Languages</a>
+              <div id="language-dropdown" class="language-dropdown">
+                <ul class="language-list">
+                  <li><a href="#" data-lang="en">English</a></li>
+                  <li><a href="#" data-lang="es">Spanish</a></li>
+                  <li><a href="#" data-lang="jp">Japanese</a></li>
                 </ul>
-            </div>
-        </nav>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
     <div class="content">
-        <div class="text_input">
-            <div class="write">
-                <!-- <h3>editor de texto</h3> -->
-            </div>
-            <div class="console">
-                <script src="{{ url_for('static', filename='scripts/console.js') }}"></script>
-                <div class="cursor"></div>
-            </div>
-            <div class="buttons">
-                <div class="buttondiv">
-                    <button type="button" id="execute" class="button"> Execute </button>
-                </div>
-                <div class="buttondiv">
-                    <button type="button" id="validate" class="button"> Validate </button>
-                </div>
-            </div>
+      <div class="text_input">
+        <div class="write">
+          <!-- <h3>editor de texto</h3> -->
         </div>
-        <div class="text_example">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere iusto voluptates nesciunt quidem. Aliquam obcaecati voluptatem id cupiditate odio magni hic voluptatibus dignissimos. Suscipit provident tempore hic assumenda ut. Tempora.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio autem sed, ab unde adipisci quis quos tenetur dolores sit reiciendis quasi fugiat quidem eaque, similique illo, expedita vero tempore.
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, consequuntur. Porro provident alias, earum pariatur illo deleniti sequi inventore magnam. Pariatur magnam praesentium officiis libero veritatis nisi, sit placeat neque.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam est eaque saepe voluptate harum vero atque debitis eos, illum doloribus, adipisci iusto, ipsam ab beatae numquam neque explicabo iure. Totam!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat dicta exercitationem quos ipsa quas, officia mollitia. Sapiente ratione quia ut praesentium odit accusamus cum facilis, ea, consequatur amet consequuntur expedita.
+        <div class="console">
+          <script src="{{ url_for('static', filename='scripts/console.js') }}"></script>
+          <div class="cursor"></div>
         </div>
+        <div class="buttons">
+          <div class="buttondiv">
+            <button type="button" id="execute" class="button">Execute</button>
+          </div>
+          <div class="buttondiv">
+            <button type="button" id="validate" class="button">Validate</button>
+          </div>
+        </div>
+      </div>
+      <div class="text_example">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere iusto
+        voluptates nesciunt quidem. Aliquam obcaecati voluptatem id cupiditate
+        odio magni hic voluptatibus dignissimos. Suscipit provident tempore hic
+        assumenda ut. Tempora. Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Id distinctio autem sed, ab unde adipisci quis quos
+        tenetur dolores sit reiciendis quasi fugiat quidem eaque, similique
+        illo, expedita vero tempore. Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Doloribus, consequuntur. Porro provident alias, earum
+        pariatur illo deleniti sequi inventore magnam. Pariatur magnam
+        praesentium officiis libero veritatis nisi, sit placeat neque. Lorem
+        ipsum dolor sit amet consectetur adipisicing elit. Quam est eaque saepe
+        voluptate harum vero atque debitis eos, illum doloribus, adipisci iusto,
+        ipsam ab beatae numquam neque explicabo iure. Totam! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Quaerat dicta exercitationem quos
+        ipsa quas, officia mollitia. Sapiente ratione quia ut praesentium odit
+        accusamus cum facilis, ea, consequatur amet consequuntur expedita.
+      </div>
     </div>
     <script src="{{ url_for('static', filename='scripts/translations.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/speech.js') }}"></script>
-</body>
+  </body>
 </html>
