@@ -1,0 +1,79 @@
+/******************************************
+ * Ejemplo desarrollado por Rainman Sián  *
+ * Blog: https://ericknavarro.io/olc2     *
+ * Febrero - 2020                         *
+ ******************************************/
+
+//Se imprime el encabezado
+aver("Tablas de" & " multiplicar");
+
+//Se declara la variable a, de tipo numerito
+numerito a;
+//Se asigna a la variable a el valor 0
+a=0;
+//Se declara la variable c, de tipo numerito
+numerito c;
+//Se asigna a la variable c el valor 0
+c=1;
+//Se imprime un separador
+aver("----------------");
+/**
+ * Se imprimen las tablas del 1 al 5 y 
+ * para cada tabla, se imprimen los resultados
+ * desde el uno hasta el 5, esto se hace con 
+ * dos ciclos while anidados. 
+ **/
+mentre(a<4+c){	
+	a=a+1;
+	numerito b;
+	b=0;
+	mentre(b<4+c){
+		b=b+1;
+		aver(a & " * " & b & " = " & a * b);
+	}
+	aver("----------------");
+}
+
+//Se asigna a la variable a el valor de 11
+a=11;
+/**
+ * La variable b ya había sido declarada pero 
+ * dentro del ámbito del primer ciclo while, 
+ * entonces no existe en este ámbito por lo que 
+ * debe declararse.
+ **/
+numerito b;
+//Se asigna valor de 12 a b y valor de 13 a c
+b=12;
+c=13;
+/**
+ * Se evalua si el valor de la variable a es 
+ * mayor que 10, si el b es mayor que 11 y si
+ * el de c es mayor que 12. 
+ **/
+chi(a>10){
+	aver("a es mayor que 10.");
+	chi(b>11){
+		aver("a es mayor que 10 y b es mayor que 11.");
+		chi(c>12){
+			aver("a es mayor que 10, b es mayor que 11 y c es mayor que 12.");
+		}
+	}
+}chinop{
+	aver("a es menor o igual que 10.");
+}
+
+aver(1 & " Hola, esto es un ejemplo de ciclo for" & 3.14);
+aver("Comenzando el ciclo...");
+
+untuk i=0 hasta 4 {
+    aver("numerito: for exterior " & i);
+
+	untuk j=0 hasta 4 {
+    	aver("numerito: for interior" & j+1);
+
+}
+
+}
+
+
