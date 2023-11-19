@@ -1,10 +1,4 @@
 
-# -----------------------------------------------------------------------------
-# Rainman Sián
-# 26-02-2020
-#
-# Ejemplo interprete sencillo con Python utilizando ply en Ubuntu
-# -----------------------------------------------------------------------------
 
 reservadas = {
     'numerito' : 'NUMERITO',
