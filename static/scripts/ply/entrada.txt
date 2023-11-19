@@ -1,9 +1,3 @@
-/******************************************
- * Ejemplo desarrollado por Rainman Sián  *
- * Blog: https://ericknavarro.io/olc2     *
- * Febrero - 2020                         *
- ******************************************/
-
 //Se imprime el encabezado
 aver("Tablas de" & " multiplicar");
 

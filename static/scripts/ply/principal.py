@@ -7,7 +7,7 @@ def procesar_aver(instr, ts) :
     print('> ', resolver_cadena(instr.cad, ts))
 
 def procesar_definicion(instr, ts) :
-    simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.numerito, 0)      # inicializamos con 0 como valor por defecto
+    simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.numerito, 0)
     ts.agregar(simbolo)
 
 def procesar_asignacion(instr, ts) :
