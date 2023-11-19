@@ -42,18 +42,21 @@
     <div class="content">
       <div class="text_input">
         <div class="write">
-          <!-- <h3>editor de texto</h3> -->
+          <textarea id="Texto" rows="5"> </textarea>
         </div>
         <div class="console">
           <script src="{{ url_for('static', filename='scripts/console.js') }}"></script>
-          <div class="cursor"></div>
         </div>
         <div class="buttons">
           <div class="buttondiv">
-            <button type="button" id="execute" class="button">Execute</button>
+            <button type="button" id="execute" class="button">
+              Execute
+            </button>
           </div>
           <div class="buttondiv">
-            <button type="button" id="validate" class="button">Validate</button>
+            <button type="button" id="validate" class="button">
+              Validate
+            </button>
           </div>
         </div>
       </div>
