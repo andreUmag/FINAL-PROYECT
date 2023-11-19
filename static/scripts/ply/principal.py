@@ -3,39 +3,46 @@ import ts as TS
 from expresiones import *
 from instrucciones import *
 
-def procesar_aver(instr, ts) :
-    print('> ', resolver_cadena(instr.cad, ts))
 
-def procesar_definicion(instr, ts) :
+def procesar_aver(instr, ts):
+    print("> ", resolver_cadena(instr.cad, ts))
+
+
+def procesar_definicion(instr, ts):
     simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.numerito, 0)
     ts.agregar(simbolo)
 
-def procesar_asignacion(instr, ts) :
+
+def procesar_asignacion(instr, ts):
     val = resolver_expresion_aritmetica(instr.expNumerica, ts)
     simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.numerito, val)
     ts.actualizar(simbolo)
 
-def procesar_mentre(instr, ts) :
-    while resolver_expreision_logica(instr.expLogica, ts) :
+
+def procesar_mentre(instr, ts):
+    while resolver_expreision_logica(instr.expLogica, ts):
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
         procesar_instrucciones(instr.instrucciones, ts_local)
 
-def procesar_chi(instr, ts) :
+
+def procesar_chi(instr, ts):
     val = resolver_expreision_logica(instr.expLogica, ts)
-    if val :
+    if val:
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
         procesar_instrucciones(instr.instrucciones, ts_local)
 
-def procesar_chi_chinop(instr, ts) :
+
+def procesar_chi_chinop(instr, ts):
     val = resolver_expreision_logica(instr.expLogica, ts)
-    if val :
+    if val:
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
         procesar_instrucciones(instr.instrIfVerdadero, ts_local)
-    else :
+    else:
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
         procesar_instrucciones(instr.instrIfFalso, ts_local)
 
-def procesar_untuk(instr, ts) :
+
+def procesar_untuk(instr, ts):
     inicio = resolver_expresion_aritmetica(instr.inicio, ts)
     fin = resolver_expresion_aritmetica(instr.fin, ts)
 
@@ -45,57 +52,82 @@ def procesar_untuk(instr, ts) :
         procesar_instrucciones(instr.instrucciones, ts_local)
 
 
-def resolver_cadena(expCad, ts) :
-    if isinstance(expCad, ExpresionConcatenar) :
+def procesar_acto_mentre(instr, ts):
+    while True:
+        ts_local = TS.TablaDeSimbolos(ts.simbolos)
+        procesar_instrucciones(instr.instrucciones, ts_local)
+        if not resolver_expreision_logica(instr.exp_logica, ts):
+            break
+
+
+def resolver_cadena(expCad, ts):
+    if isinstance(expCad, ExpresionConcatenar):
         exp1 = resolver_cadena(expCad.exp1, ts)
         exp2 = resolver_cadena(expCad.exp2, ts)
         return exp1 + exp2
-    elif isinstance(expCad, ExpresionDobleComilla) :
+    elif isinstance(expCad, ExpresionDobleComilla):
         return expCad.val
-    elif isinstance(expCad, ExpresionCadenaNumerico) :
+    elif isinstance(expCad, ExpresionCadenaNumerico):
         return str(resolver_expresion_aritmetica(expCad.exp, ts))
-    else :
-        print('Error: Expresión cadena no válida')
+    else:
+        print("Error: Expresión cadena no válida")
 
 
-def resolver_expreision_logica(expLog, ts) :
+def resolver_expreision_logica(expLog, ts):
     exp1 = resolver_expresion_aritmetica(expLog.exp1, ts)
     exp2 = resolver_expresion_aritmetica(expLog.exp2, ts)
-    if expLog.operador == OPERACION_LOGICA.MAYOR_QUE : return exp1 > exp2
-    if expLog.operador == OPERACION_LOGICA.MENOR_QUE : return exp1 < exp2
-    if expLog.operador == OPERACION_LOGICA.IGUAL : return exp1 == exp2
-    if expLog.operador == OPERACION_LOGICA.DIFERENTE : return exp1 != exp2
+    if expLog.operador == OPERACION_LOGICA.MAYOR_QUE:
+        return exp1 > exp2
+    if expLog.operador == OPERACION_LOGICA.MENOR_QUE:
+        return exp1 < exp2
+    if expLog.operador == OPERACION_LOGICA.IGUAL:
+        return exp1 == exp2
+    if expLog.operador == OPERACION_LOGICA.DIFERENTE:
+        return exp1 != exp2
 
-def resolver_expresion_aritmetica(expNum, ts) :
-    if isinstance(expNum, ExpresionBinaria) :
+
+def resolver_expresion_aritmetica(expNum, ts):
+    if isinstance(expNum, ExpresionBinaria):
         exp1 = resolver_expresion_aritmetica(expNum.exp1, ts)
         exp2 = resolver_expresion_aritmetica(expNum.exp2, ts)
-        if expNum.operador == OPERACION_ARITMETICA.MAS : return exp1 + exp2
-        if expNum.operador == OPERACION_ARITMETICA.MENOS : return exp1 - exp2
-        if expNum.operador == OPERACION_ARITMETICA.POR : return exp1 * exp2
-        if expNum.operador == OPERACION_ARITMETICA.DIVIDIDO : return exp1 / exp2
-    elif isinstance(expNum, ExpresionNegativo) :
+        if expNum.operador == OPERACION_ARITMETICA.MAS:
+            return exp1 + exp2
+        if expNum.operador == OPERACION_ARITMETICA.MENOS:
+            return exp1 - exp2
+        if expNum.operador == OPERACION_ARITMETICA.POR:
+            return exp1 * exp2
+        if expNum.operador == OPERACION_ARITMETICA.DIVIDIDO:
+            return exp1 / exp2
+    elif isinstance(expNum, ExpresionNegativo):
         exp = resolver_expresion_aritmetica(expNum.exp, ts)
         return exp * -1
-    elif isinstance(expNum, Expresionnumerito) :
+    elif isinstance(expNum, Expresionnumerito):
         return expNum.val
-    elif isinstance(expNum, ExpresionIdentificador) :
+    elif isinstance(expNum, ExpresionIdentificador):
         return ts.obtener(expNum.id).valor
 
 
-def procesar_instrucciones(instrucciones, ts) :
+def procesar_instrucciones(instrucciones, ts):
     ## lista de instrucciones recolectadas
-    for instr in instrucciones :
-        if isinstance(instr, aver) : procesar_aver(instr, ts)
-        elif isinstance(instr, Definicion) : procesar_definicion(instr, ts)
-        elif isinstance(instr, Asignacion) : procesar_asignacion(instr, ts)
-        elif isinstance(instr, mentre) : procesar_mentre(instr, ts)
-        elif isinstance(instr, chi) : procesar_chi(instr, ts)
-        elif isinstance(instr, ChiChinop) : procesar_chi_chinop(instr, ts)
-        elif isinstance(instr, untuk) : procesar_untuk(instr, ts)
-        else : print('Error: instrucción no válida')
-
-
+    for instr in instrucciones:
+        if isinstance(instr, aver):
+            procesar_aver(instr, ts)
+        elif isinstance(instr, Definicion):
+            procesar_definicion(instr, ts)
+        elif isinstance(instr, Asignacion):
+            procesar_asignacion(instr, ts)
+        elif isinstance(instr, mentre):
+            procesar_mentre(instr, ts)
+        elif isinstance(instr, chi):
+            procesar_chi(instr, ts)
+        elif isinstance(instr, ChiChinop):
+            procesar_chi_chinop(instr, ts)
+        elif isinstance(instr, untuk):
+            procesar_untuk(instr, ts)
+        elif isinstance(instr, ActoMentre):
+            procesar_acto_mentre(instr, ts)
+        else:
+            print("Error: instrucción no válida")
 
 
 f = open("static/scripts/ply/entrada.txt", "r")

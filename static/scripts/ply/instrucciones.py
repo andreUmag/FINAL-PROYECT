@@ -1,25 +1,28 @@
 class Instruccion:
-    '''This is an abstract class'''
+    """This is an abstract class"""
 
-class aver(Instruccion) :
-    '''
-        Esta clase representa la instrucción aver.
-        La instrucción aver únicamente tiene como parámetro una cadena
-    '''
 
-    def __init__(self,  cad) :
+class aver(Instruccion):
+    """
+    Esta clase representa la instrucción aver.
+    La instrucción aver únicamente tiene como parámetro una cadena
+    """
+
+    def __init__(self, cad):
         self.cad = cad
 
-class mentre(Instruccion) :
-    '''
-        Esta clase representa la instrucción mentre.
-        La instrucción mentre recibe como parámetro una expresión lógica y la lista
-        de instrucciones a ejecutar si la expresión lógica es verdadera.
-    '''
 
-    def __init__(self, expLogica, instrucciones = []) :
+class mentre(Instruccion):
+    """
+    Esta clase representa la instrucción mentre.
+    La instrucción mentre recibe como parámetro una expresión lógica y la lista
+    de instrucciones a ejecutar si la expresión lógica es verdadera.
+    """
+
+    def __init__(self, expLogica, instrucciones=[]):
         self.expLogica = expLogica
         self.instrucciones = instrucciones
+
 
 class untuk(Instruccion):
     def __init__(self, variable, inicio, fin, instrucciones):
@@ -29,45 +32,62 @@ class untuk(Instruccion):
         self.instrucciones = instrucciones
 
 
-class Definicion(Instruccion) :
-    '''
-        Esta clase representa la instrucción de definición de variables.
-        Recibe como parámetro el nombre del identificador a definir
-    '''
+class Definicion(Instruccion):
+    """
+    Esta clase representa la instrucción de definición de variables.
+    Recibe como parámetro el nombre del identificador a definir
+    """
 
-    def __init__(self, id) :
+    def __init__(self, id):
         self.id = id
 
-class Asignacion(Instruccion) :
-    '''
-        Esta clase representa la instrucción de asignación de variables
-        Recibe como parámetro el identificador a asignar y el valor que será asignado.
-    '''
 
-    def __init__(self, id, expNumerica) :
+class Asignacion(Instruccion):
+    """
+    Esta clase representa la instrucción de asignación de variables
+    Recibe como parámetro el identificador a asignar y el valor que será asignado.
+    """
+
+    def __init__(self, id, expNumerica):
         self.id = id
         self.expNumerica = expNumerica
 
-class chi(Instruccion) : 
-    '''
-        Esta clase representa la instrucción if.
-        La instrucción if recibe como parámetro una expresión lógica y la lista
-        de instrucciones a ejecutar si la expresión lógica es verdadera.
-    '''
 
-    def __init__(self, expLogica, instrucciones = []) :
+class chi(Instruccion):
+    """
+    Esta clase representa la instrucción if.
+    La instrucción if recibe como parámetro una expresión lógica y la lista
+    de instrucciones a ejecutar si la expresión lógica es verdadera.
+    """
+
+    def __init__(self, expLogica, instrucciones=[]):
         self.expLogica = expLogica
         self.instrucciones = instrucciones
 
-class ChiChinop(Instruccion) : 
-    '''
-        Esta clase representa la instrucción if-else.
-        La instrucción if-else recibe como parámetro una expresión lógica y la lista
-        de instrucciones a ejecutar si la expresión lógica es verdadera y otro lista de instrucciones
-        a ejecutar si la expresión lógica es falsa.
-    '''
 
-    def __init__(self, expLogica, instrIfVerdadero = [], instrIfFalso = []) :
+class ChiChinop(Instruccion):
+    """
+    Esta clase representa la instrucción if-else.
+    La instrucción if-else recibe como parámetro una expresión lógica y la lista
+    de instrucciones a ejecutar si la expresión lógica es verdadera y otro lista de instrucciones
+    a ejecutar si la expresión lógica es falsa.
+    """
+
+    def __init__(self, expLogica, instrIfVerdadero=[], instrIfFalso=[]):
         self.expLogica = expLogica
         self.instrIfVerdadero = instrIfVerdadero
         self.instrIfFalso = instrIfFalso
+
+
+class ActoMentre(Instruccion):
+    """
+    Esta clase representa la instrucción do-while (acto mentre).
+
+    Parámetros:
+        - instrucciones: Lista de instrucciones a ejecutar al menos una vez y luego repetir mientras la expresión lógica sea verdadera.
+        - exp_logica: Expresión lógica que se evalúa después de ejecutar las instrucciones. El bucle se repite mientras esta expresión sea verdadera.
+    """
+
+    def __init__(self, instrucciones, exp_logica):
+        self.instrucciones = instrucciones
+        self.exp_logica = exp_logica

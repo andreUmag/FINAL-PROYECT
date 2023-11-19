@@ -71,3 +71,10 @@ untuk i=0 hasta 4 {
 }
 
 
+numerito x;
+x = 10;
+
+acto {
+    aver(x);
+    x = x + 1;
+} mentre(x < 15);
