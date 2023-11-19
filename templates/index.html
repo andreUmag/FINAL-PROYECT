@@ -1,57 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Interprete</title>
-    <link rel="icon" href="{{ url_for('static', filename='assets/upwork-logo-24.ico') }}"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/body.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/menu.css') }}"/>
-</head>
-<body>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='assets/upwork-logo-24.ico') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/body.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/menu.css') }}"
+    />
+  </head>
+  <body>
     <div class="menu">
-        <nav class="navbar">
-            <a href="#" class="logo">
-                <p id="interpreter">Interpreter</p>
-                <p id="web" class="pila">web</p></a>
-            <div class="nav-links">
-                
-                <ul>
-                    <li id="languages" class="dropdown">
-                        <a href="#">Languages</a>
-                        <div id="language-dropdown" class="language-dropdown">
-                            <ul class="language-list">
-                                <li><a href="#" data-lang="en">English</a></li>
-                                <li><a href="#" data-lang="es">Spanish</a></li>
-                                <li><a href="#" data-lang="jp">Japanese</a></li>
-                            </ul>
-                        </div>
-                    </li>                        
+      <nav class="navbar">
+        <a href="#" class="logo">
+          <p id="interpreter">Interpreter</p>
+          <p id="web" class="pila">web</p></a
+        >
+        <div class="nav-links">
+          <ul>
+            <li id="languages" class="dropdown">
+              <a href="#">Languages</a>
+              <div id="language-dropdown" class="language-dropdown">
+                <ul class="language-list">
+                  <li><a href="#" data-lang="en">English</a></li>
+                  <li><a href="#" data-lang="es">Spanish</a></li>
+                  <li><a href="#" data-lang="jp">Japanese</a></li>
                 </ul>
-            </div>
-        </nav>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
     <div class="content">
-        <div class="text_input">
-            <div class="write">
-                <!-- <h3>editor de texto</h3> -->
-            </div>
-            <div class="console">
-                <!-- <h3>consola de respuesta</h3> -->
-            </div>
-            <div class="buttons">
-                <div class="buttondiv">
-                    <button type="button" id="execute" class="button"> Execute </button>
-                </div>
-                <div class="buttondiv">
-                    <button type="button" id="validate" class="button"> Validate </button>
-                </div>
-            </div>
+      <div class="text_input">
+        <div class="write">
+          <textarea id="Texto" rows="5"> </textarea>
         </div>
-        <div class="text_example">
-            <!-- <h3>ESPACIO PARA MOSTRAR LA SINTAXIS DEL LENGUAJE</h3> -->
+        <div class="console">
+          <script src="{{ url_for('static', filename='scripts/console.js') }}"></script>
         </div>
+        <div class="buttons">
+          <div class="buttondiv">
+            <button type="button" id="execute" class="button">
+              Execute
+            </button>
+          </div>
+          <div class="buttondiv">
+            <button type="button" id="validate" class="button">
+              Validate
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="text_example">
+        <p style="color: green;">//Imprimir:</p>
+        <p>aver("mensaje"); // se esta imprimiendo un mensaje</p>
+        <p>aver(a); // se esta imprimiendo una variable</p><br>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+        <p style="color: green;">//Declarar variable numerica:</p>
+        <p>numero a;</p>
+      </div>
     </div>
     <script src="{{ url_for('static', filename='scripts/translations.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/speech.js') }}"></script>
-</body>
+  </body>
 </html>
