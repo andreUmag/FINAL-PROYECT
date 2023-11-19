@@ -36,7 +36,7 @@ body {
   margin-left: 5px;
   border-radius: 8px;
   margin-top: 6px;
-  background-color: rgb(37, 37, 37);
+  background-color: #0D0D0D;
   overflow: auto;
   padding: 15px;
   color: white;
@@ -82,7 +82,7 @@ body {
   border: none;
   color: #fff;
   cursor: pointer;
-  background-color: #042616;
+  background-color: #F26B1D;
   transition: all 0.2s ease;
 }
 .button:active {
@@ -106,7 +106,7 @@ body {
 }
 
 .text_example::-webkit-scrollbar-thumb {
-  background: #ff9d00;
+  background: #F26B1D;
   border-radius: 5px;
 }
 
@@ -115,7 +115,7 @@ body {
 }
 
 .console::-webkit-scrollbar-thumb {
-  background: #ff9d00;
+  background: #F26B1D;
   border-radius: 5px;
 }
 
@@ -157,7 +157,7 @@ body {
 }
 
 #Texto::-webkit-scrollbar-thumb {
-  background: #ff9d00;
+  background: #F26B1D;
   border-radius: 5px;
 }
 

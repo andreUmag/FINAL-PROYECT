@@ -18,7 +18,7 @@
 }
 
 .navbar .logo {
-  color: #075933;
+  color: #05F29B;
   font-size: 2em;
   font-weight: bold;
   display: flex;
@@ -31,7 +31,7 @@
 }
 
 .navbar .logo p.pila {
-  color: #0da65f;
+  color: #85F2A0;
   font-size: 15px;
   margin-left: 4px;
   margin-top: 20px;
@@ -46,7 +46,7 @@
 }
 
 .navbar .nav-links ul li a {
-  color: #075933;
+  color: #05F29B;
   font-weight: 600;
 }
 
