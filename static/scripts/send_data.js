@@ -1,4 +1,4 @@
-document.getElementById('execute').addEventListener('click', function() {
+document.getElementById('send').addEventListener('click', function() {
     var texto = document.getElementById('Texto').value;
 
     fetch('/guardar_texto', {
