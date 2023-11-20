@@ -1,1 +1,13 @@
- aver("hola mundo");
+numerito n;
+numerito s;
+n = turu;
+s = 0;
+
+mentre(n == turu){
+    aver("prueba");
+    chi(s<3){
+        s = s + 1;
+    }chinop{
+        n = forusu;
+    }
+}
