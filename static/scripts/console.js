@@ -6,5 +6,3 @@
       (JSON && JSON.stringify ? JSON.stringify(message) : message) + "<br>";
   };
 })();
-
-console.log("Hola mundo")

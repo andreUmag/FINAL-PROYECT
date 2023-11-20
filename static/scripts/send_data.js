@@ -10,7 +10,7 @@ document.getElementById('send').addEventListener('click', function() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Respuesta del servidor:', data);
+        console.log('Enviado correctamente, puede ejecutar o validar');
     })
     .catch(error => {
         console.error('Error al enviar datos al servidor:', error);
