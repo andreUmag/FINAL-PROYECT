@@ -130,7 +130,7 @@ def procesar_instrucciones(instrucciones, ts):
             print("Error: instrucción no válida")
 
 
-f = open("static/scripts/ply/entrada.txt", "r")
+f = open("backend/ply/entrada.txt", "r")
 input = f.read()
 
 instrucciones = g.parse(input)
