@@ -7,6 +7,7 @@ reservadas = {
     "chinop": "CHINOP",
     "untuk": "UNTUK",
     "hasta": "HASTA",
+    "funcao": "FUNCAO",
 }
 
 tokens = [
@@ -146,7 +147,8 @@ def p_instruccion(t):
     | chi_instr
     | chi_chinop_instr
     | untuk_instr
-    | acto_mentre_instr"""
+    | acto_mentre_instr
+    | call_funcao_instr"""
     t[0] = t[1]
 
 
@@ -189,6 +191,13 @@ def p_acto_mentre_instr(t):
     "acto_mentre_instr : ACTO LLAVIZQ instrucciones LLAVDER MENTRE PARIZQ expresion_logica PARDER PTCOMA"
     t[0] = ActoMentre(t[3], t[7])
 
+def p_definicion_funcao(t):
+    "definicion_instr : FUNCAO ID PARIZQ PARDER LLAVIZQ instrucciones LLAVDER"
+    t[0] = DefinicionFuncao(t[2], t[6])
+
+def p_call_funcao(t):
+    "call_funcao_instr : ID PARIZQ PARDER PTCOMA"
+    t[0] = CallFuncao(t[1])
 
 def p_expresion(t):
     """expresion : expresion_numerica

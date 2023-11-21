@@ -12,6 +12,15 @@ def procesar_definicion(instr, ts):
     simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.numerito, 0)
     ts.agregar(simbolo)
 
+def procesar_call_funcao(instr, ts):
+    if instr.id in ts.simbolos:
+        funcion = ts.obtener(instr.id)
+        ts_local = TS.TablaDeSimbolos(ts.simbolos)
+        procesar_instrucciones(funcion.valor, ts_local)
+    
+def procesar_definicion_funcion(instr, ts):
+    simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.function, instr.instrucciones)
+    ts.agregar(simbolo)
 
 def procesar_asignacion(instr, ts):
     val = resolver_expresion_aritmetica(instr.expNumerica, ts)
@@ -30,6 +39,8 @@ def procesar_chi(instr, ts):
     if val:
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
         procesar_instrucciones(instr.instrucciones, ts_local)
+
+
 
 
 def procesar_chi_chinop(instr, ts):
@@ -150,6 +161,10 @@ def procesar_instrucciones(instrucciones, ts):
             procesar_aver(instr, ts)
         elif isinstance(instr, Definicion):
             procesar_definicion(instr, ts)
+        elif isinstance(instr, DefinicionFuncao):
+            procesar_definicion_funcion(instr, ts)
+        elif isinstance(instr, CallFuncao):
+            procesar_call_funcao(instr, ts)
         elif isinstance(instr, Asignacion):
             procesar_asignacion(instr, ts)
         elif isinstance(instr, mentre):

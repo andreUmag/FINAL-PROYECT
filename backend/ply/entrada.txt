@@ -1,0 +1,14 @@
+  numerito a;
+numerito b;
+
+a=1;
+b=8;
+aver("Hola mundo");
+funcao msg(){
+    aver("hola dentro de la funcion");
+    untuk i=0 hasta 10 {
+        aver("hola");
+    }
+}
+
+msg();

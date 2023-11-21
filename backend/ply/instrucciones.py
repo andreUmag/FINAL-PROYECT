@@ -41,6 +41,25 @@ class Definicion(Instruccion):
     def __init__(self, id):
         self.id = id
 
+class CallFuncao(Instruccion):
+    """
+    Esta clase representa la instrucción de llamada a funciones.
+    Recibe como parámetro el nombre del identificador a definir
+    """
+
+    def __init__(self, id):
+        self.id = id
+
+class DefinicionFuncao(Instruccion):
+    """
+    Esta clase representa la instrucción de definición de funciones.
+    Recibe como parámetro el nombre del identificador a definir
+    """
+
+    def __init__(self, id, instrucciones):
+        self.id = id
+        self.instrucciones = instrucciones
+        # self.parametros = parametros
 
 class Asignacion(Instruccion):
     """

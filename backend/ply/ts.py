@@ -3,6 +3,7 @@ from enum import Enum
 
 class TIPO_DATO(Enum):
     numerito = 1
+    function = 2
 
 
 class Simbolo:
