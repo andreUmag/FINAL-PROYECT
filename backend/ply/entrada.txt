@@ -1,9 +1,0 @@
-numerito a;
-numerito b;
-a = 1;
-b = 2;
-shi(a>b){
-  aver("a es mayor");
-}shino{
-  aver("b es mayor");
-};

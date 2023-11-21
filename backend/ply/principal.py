@@ -56,7 +56,7 @@ def procesar_acto_mentre(instr, ts):
     while True:
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
         procesar_instrucciones(instr.instrucciones, ts_local)
-        if not resolver_expreision_logica(instr.exp_logica, ts):
+        if not resolver_expresion_booleana(instr.exp_logica, ts):
             break
 
 
@@ -69,8 +69,19 @@ def resolver_cadena(expCad, ts):
         return expCad.val
     elif isinstance(expCad, ExpresionCadenaNumerico):
         return str(resolver_expresion_aritmetica(expCad.exp, ts))
+    elif isinstance(expCad, ExpresionCadenaBooleana):
+        return str(resolver_expresion_booleana(expCad.exp, ts))
+    elif isinstance(
+        expCad, ExpresionIdentificador
+    ):  # Agregar manejo para identificadores
+        if expCad.id in ts.simbolos:
+            return str(ts.obtener(expCad.id).valor)
+        else:
+            print(f"Error: Identificador '{expCad.id}' no definido.")
+            return ""
     else:
-        print("Error: Expresión cadena no válida")
+        print(f"Error: Expresión cadena no válida: {expCad}")
+        return ""
 
 
 def resolver_expreision_logica(expLog, ts):
@@ -104,7 +115,32 @@ def resolver_expresion_aritmetica(expNum, ts):
     elif isinstance(expNum, Expresionnumerito):
         return expNum.val
     elif isinstance(expNum, ExpresionIdentificador):
-        return ts.obtener(expNum.id).valor
+        if expNum.id in ts.simbolos:
+            return ts.obtener(expNum.id).valor
+        else:
+            print(f"Error: variable '{expNum.id}' no definida.")
+            return 0
+    else:
+        print("Error: Expresión aritmética no válida")
+        return
+
+
+def resolver_expresion_booleana(expBool, ts):
+    if isinstance(expBool, ExpresionBooleana):
+        return expBool.val
+    elif isinstance(expBool, ExpresionLogica):
+        exp1 = resolver_expresion_aritmetica(expBool.exp1, ts)
+        exp2 = resolver_expresion_aritmetica(expBool.exp2, ts)
+        if expBool.operador == OPERACION_LOGICA.MAYOR_QUE:
+            return exp1 > exp2
+        if expBool.operador == OPERACION_LOGICA.MENOR_QUE:
+            return exp1 < exp2
+        if expBool.operador == OPERACION_LOGICA.IGUAL:
+            return exp1 == exp2
+        if expBool.operador == OPERACION_LOGICA.DIFERENTE:
+            return exp1 != exp2
+    else:
+        print("Error: Expresión booleana no válida")
 
 
 def procesar_instrucciones(instrucciones, ts):
@@ -135,5 +171,9 @@ input = f.read()
 
 instrucciones = g.parse(input)
 ts_global = TS.TablaDeSimbolos()
+turu = ExpresionIdentificador("turu")
+ts_global.agregar(TS.Simbolo("turu", TS.TIPO_DATO.__bool__, True))
+turu = ExpresionIdentificador("forusu")
+ts_global.agregar(TS.Simbolo("forusu", TS.TIPO_DATO.__bool__, False))
 
 procesar_instrucciones(instrucciones, ts_global)

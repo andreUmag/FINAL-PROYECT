@@ -29,6 +29,8 @@ tokens = [
     "ENTERO",
     "CADENA",
     "ID",
+    "TRUE",
+    "FALSE",
 ] + list(reservadas.values())
 
 # Tokens
@@ -149,7 +151,7 @@ def p_instruccion(t):
 
 
 def p_instruccion_aver(t):
-    "aver_instr     : AVER PARIZQ expresion_cadena PARDER PTCOMA"
+    "aver_instr     : AVER PARIZQ expresion PARDER PTCOMA"
     t[0] = aver(t[3])
 
 
@@ -186,6 +188,19 @@ def p_untuk_instr(t):
 def p_acto_mentre_instr(t):
     "acto_mentre_instr : ACTO LLAVIZQ instrucciones LLAVDER MENTRE PARIZQ expresion_logica PARDER PTCOMA"
     t[0] = ActoMentre(t[3], t[7])
+
+
+def p_expresion(t):
+    """expresion : expresion_numerica
+    | expresion_cadena
+    | expresion_booleana"""
+    t[0] = t[1]
+
+
+def p_expresion_booleana(t):
+    """expresion_booleana : TRUE
+    | FALSE"""
+    t[0] = ExpresionBooleana(t[1])
 
 
 def p_expresion_binaria(t):
