@@ -17,9 +17,11 @@ def procesar_call_funcao(instr, ts):
         funcion = ts.obtener(instr.id)
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
         procesar_instrucciones(funcion.valor, ts_local)
+    else:
+        print(f"Error: Función '{instr.id}' no definida.")
     
 def procesar_definicion_funcion(instr, ts):
-    simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.function, instr.instrucciones)
+    simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.function, instr.instrucciones, instr.parametros)
     ts.agregar(simbolo)
 
 def procesar_asignacion(instr, ts):

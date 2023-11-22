@@ -1,14 +1,24 @@
-  numerito a;
+numerito a;
 numerito b;
 
-a=1;
-b=8;
-aver("Hola mundo");
-funcao msg(){
-    aver("hola dentro de la funcion");
-    untuk i=0 hasta 10 {
-        aver("hola");
-    }
-}
 
-msg();
+
+
+aver("Hola mundo");
+funcao msg(b){
+    aver(b);
+    aver("hola dentro de la funcion");
+}
+aver(a);
+
+
+
+funcao suma(a, b){
+numerito resultado;
+resultado = a + b;
+aver(resultado);
+}
+a=10;
+b=8;
+suma(a, b);
+aver(resultado);

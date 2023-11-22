@@ -7,12 +7,12 @@ class TIPO_DATO(Enum):
 
 
 class Simbolo:
-    "Esta clase representa un simbolo dentro de nuestra tabla de simbolos"
-
-    def __init__(self, id, tipo, valor):
+    def __init__(self, id, tipo, valor, parametros=None):
         self.id = id
-        self.tipo = tipo
+        self.tipo_dato = tipo
         self.valor = valor
+        self.parametros = parametros if parametros is not None else []
+
 
 
 class TablaDeSimbolos:
@@ -35,3 +35,11 @@ class TablaDeSimbolos:
             print("Error: variable ", simbolo.id, " no definida.")
         else:
             self.simbolos[simbolo.id] = simbolo
+    
+    def borrar(self, id):
+        if not id in self.simbolos:
+            print("Error: variable ", id, " no definida.")
+        else:
+            del self.simbolos[id]
+
+

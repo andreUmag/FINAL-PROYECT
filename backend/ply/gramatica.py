@@ -8,6 +8,7 @@ reservadas = {
     "untuk": "UNTUK",
     "hasta": "HASTA",
     "funcao": "FUNCAO",
+    "coma": "COMA",
 }
 
 tokens = [
@@ -50,6 +51,7 @@ t_MENQUE = r"<"
 t_MAYQUE = r">"
 t_IGUALQUE = r"=="
 t_NIGUALQUE = r"!="
+t_COMA = r","
 
 
 def t_DECIMAL(t):
@@ -192,11 +194,37 @@ def p_acto_mentre_instr(t):
     t[0] = ActoMentre(t[3], t[7])
 
 def p_definicion_funcao(t):
-    "definicion_instr : FUNCAO ID PARIZQ PARDER LLAVIZQ instrucciones LLAVDER"
-    t[0] = DefinicionFuncao(t[2], t[6])
+    """
+    definicion_instr : FUNCAO ID PARIZQ parametros PARDER LLAVIZQ instrucciones LLAVDER
+                     | FUNCAO ID PARIZQ PARDER LLAVIZQ instrucciones LLAVDER
+    """
+    if t[4] == ")":
+        t[0] = DefinicionFuncao(t[2], [], t[6])
+    else:
+        t[0] = DefinicionFuncao(t[2], t[4], t[7])
+
+def p_parametros(t):
+    """
+    parametros : parametros COMA ID
+               | parametros COMA expresion
+    
+    """
+    t[1].append(t[3])
+    t[0] = t[1]
+
+def p_parametros_single(t):
+    """
+    parametros : ID
+               | expresion
+    
+    """
+    t[0] = [t[1]]
 
 def p_call_funcao(t):
-    "call_funcao_instr : ID PARIZQ PARDER PTCOMA"
+    """
+    call_funcao_instr : ID PARIZQ PARDER PTCOMA
+                      | ID PARIZQ parametros PARDER PTCOMA
+    """
     t[0] = CallFuncao(t[1])
 
 def p_expresion(t):
