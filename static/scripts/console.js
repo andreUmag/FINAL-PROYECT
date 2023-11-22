@@ -19,3 +19,16 @@ function executeCode() {
       document.querySelector(".console").innerHTML += 'Error: ' + error + "<br>";
     });
 }
+
+function validateCode() {
+  fetch('/validate_code')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.mensaje);
+      document.querySelector(".console").innerHTML += data.mensaje + "<br>";
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      document.querySelector(".console").innerHTML += 'Error: ' + error + "<br>";
+    });
+}
