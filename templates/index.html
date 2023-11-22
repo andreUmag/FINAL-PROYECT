@@ -54,15 +54,16 @@
             </button>
           </div>
           <div class="buttondiv">
-            <button type="button" id="execute" class="button" onclick="executeCode()">
-              Execute
-            </button>
-          </div>
-          <div class="buttondiv">
             <button type="button" id="validate" class="button" onclick="validateCode()">
               Validate
             </button>
           </div>
+          <div class="buttondiv">
+            <button type="button" id="execute" class="button" onclick="executeCode()">
+              Execute
+            </button>
+          </div>
+        
         </div>
       </div>
       <div class="text_example">
@@ -88,6 +89,58 @@
             &nbsp;&nbsp;aver("b es mayor que a");<br>
             &nbsp;}<br>
           }</p><br>
+          <p style="color: green;">//Ciclo for:</p>
+          <p>aver("Hola, esto es un ejemplo de ciclo for ");<br>
+            aver("Comenzando el ciclo...");<br>
+            
+            untuk i=0 hasta 3 { <br>
+              &nbsp;aver("Iteracion numero " & i);<br>
+              &nbsp;untuk j=0 hasta 3 { <br>
+                &nbsp;&nbsp;aver("Mensaje " & j+1); <br>
+                &nbsp;} <br>
+            }</p><br>
+          <p style="color: green;">//Ciclo While:</p>
+          <p>
+            numerito i; <br>
+            i = -5; <br>
+            mentre(i < 1){ <br> 
+            &nbsp;i = i+1; <br>
+            &nbsp;aver("hola mundo");<br>
+          }</p><br>
+          <p style="color: green;">//Ciclo doWhile:</p>
+          <p>aver("Ejemplo de do while");<br>
+            numerito x;<br>
+            x = 10;<br>
+            acto {<br>
+              &nbsp;aver(x);<br>
+              &nbsp;x = x + 1;<br>
+            } mentre(x < 15);
+          </p><br>
+          <p style="color: green;">//Funciones:</p>
+          <p>funcao mensaje(){<br>
+            &nbsp;aver("Prueba de funciones");<br>
+          }<br><br>
+          funcao suma(a, b){<br>
+            &nbsp;numerito resultado;<br>
+            &nbsp;resultado = a + b;<br>
+            &nbsp;chi(resultado>10){<br>
+            &nbsp;&nbsp;aver("El resultado es mayor a 10");<br>
+            &nbsp;}chinop{<br>
+            &nbsp;&nbsp;aver("El resultado de la suma es: ");<br>
+            &nbsp;&nbsp;aver(resultado);<br>
+            &nbsp;}<br>
+          }<br><br>
+          funcao multiplicacion(a, b){<br>
+            &nbsp;numerito resultado;<br>
+            &nbsp;resultado = a * b;<br>
+            &nbsp;aver("El resultado de la multiplicacion es: ");<br>
+            &nbsp;aver(resultado);<br>
+          }<br>
+          </p><br>
+          <p style="color: green;">//Llamado a funciones:</p>
+          <p>mensaje();<br>
+            suma(4, 5);<br>
+            multiplicacion(10, 5);</p>
       </div>
     </div>
     <script src="{{ url_for('static', filename='scripts/translations.js') }}"></script>
