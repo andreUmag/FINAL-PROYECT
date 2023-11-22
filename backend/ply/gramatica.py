@@ -10,6 +10,8 @@ reservadas = {
     "funcao": "FUNCAO",
     "coma": "COMA",
     "bool": "BOOL",
+    "sisas": "SISAS",
+    "nonas": "NONAS",
 }
 
 tokens = [
@@ -32,8 +34,6 @@ tokens = [
     "ENTERO",
     "CADENA",
     "ID",
-    "SISAS",
-    "NONAS",
     "TRUE",
     "FALSE",
 ] + list(reservadas.values())
