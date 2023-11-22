@@ -53,6 +53,8 @@ t_IGUALQUE = r"=="
 t_NIGUALQUE = r"!="
 t_COMA = r","
 
+lexical_errors = False
+
 
 def t_DECIMAL(t):
     r"\d+\.\d+"
@@ -109,9 +111,11 @@ def t_error(t):
     t.lexer.skip(1)
 
 
+
 import ply.lex as lex
 
 lexer = lex.lex()
+
 
 
 precedence = (
@@ -311,6 +315,7 @@ def p_error(t):
     print("Error sintáctico en '%s'" % t.value)
 
 
+
 import ply.yacc as yacc
 
 parser = yacc.yacc()
@@ -318,3 +323,14 @@ parser = yacc.yacc()
 
 def parse(input):
     return parser.parse(input)
+
+def check_lexical(input_text):
+    lexer.input(input_text)
+    tok = lexer.token()
+
+            
+
+        
+
+
+

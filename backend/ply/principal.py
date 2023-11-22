@@ -2,6 +2,8 @@ import gramatica as g
 import ts as TS
 from expresiones import *
 from instrucciones import *
+import os
+import sys
 
 
 def procesar_aver(instr, ts):
@@ -22,7 +24,8 @@ def procesar_call_funcao(instr, ts):
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
         procesar_instrucciones(funcion.valor, ts_local)
     else:
-        print(f"Error: Función '{instr.id}' no definida.")
+        raise Exception(f"Error: Función '{instr.id}' no definida.")
+        # print(f"Error: Función '{instr.id}' no definida.")
     
 def procesar_definicion_funcion(instr, ts):
     simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.function, instr.instrucciones, instr.parametros)
@@ -104,9 +107,11 @@ def resolver_cadena(expCad, ts):
         if expCad.id in ts.simbolos:
             return str(ts.obtener(expCad.id).valor)
         else:
-            print(f"Error: Identificador '{expCad.id}' no definido.")
+            raise Exception(f"Error: Identificador '{expCad.id}' no definido.")
+            # print(f"Error: Identificador '{expCad.id}' no definido.")
             return ""
     else:
+        raise Exception(f"Error: Expresión cadena no válida: {expCad}")
         print(f"Error: Expresión cadena no válida: {expCad}")
         return ""
 
@@ -144,10 +149,12 @@ def resolver_expresion_aritmetica(expNum, ts):
     elif isinstance(expNum, ExpresionIdentificador):
         if expNum.id in ts.simbolos:
             return ts.obtener(expNum.id).valor
-        else:
+        else:  
+            raise Exception(f"Error: variable '{expNum.id}' no definida.")
             print(f"Error: variable '{expNum.id}' no definida.")
             return 0
     else:
+        raise Exception(f"Error: Expresión aritmética no válida: {expNum}")
         print("Error: Expresión aritmética no válida")
         return
 
@@ -167,6 +174,7 @@ def resolver_expresion_booleana(expBool, ts):
         if expBool.operador == OPERACION_LOGICA.DIFERENTE:
             return exp1 != exp2
     else:
+        raise Exception(f"Error: Expresión booleana no válida: {expBool}")
         print("Error: Expresión booleana no válida")
 
 
@@ -194,17 +202,44 @@ def procesar_instrucciones(instrucciones, ts):
         elif isinstance(instr, ActoMentre):
             procesar_acto_mentre(instr, ts)
         else:
+            raise Exception(f"Error: instrucción no válida: {instr}")
             print("Error: instrucción no válida")
+
+def validar():
+    try:
+        procesar_instrucciones(instrucciones, ts_global)
+        sys.stdout = original_stdout
+        print("Tu codigo esta bellaco :)")
+    except Exception as e:
+        sys.stdout = original_stdout
+        print(e)
+        print("Error: hay errores en el código.")
+
+def execute():
+    try:
+        sys.stdout = original_stdout
+        procesar_instrucciones(instrucciones, ts_global)
+    except Exception as e:
+        sys.stdout = original_stdout
+        print(e)
+        print("Error: hay errores en el código.")
+
 
 
 f = open("backend/ply/entrada.txt", "r")
 input = f.read()
-
+original_stdout = sys.stdout
 instrucciones = g.parse(input)
+lexer = g.check_lexical(input)
+
 ts_global = TS.TablaDeSimbolos()
 turu = ExpresionIdentificador("turu")
 ts_global.agregar(TS.Simbolo("turu", TS.TIPO_DATO.__bool__, True))
 turu = ExpresionIdentificador("forusu")
 ts_global.agregar(TS.Simbolo("forusu", TS.TIPO_DATO.__bool__, False))
+sys.stdout = open(os.devnull, 'w') 
 
-procesar_instrucciones(instrucciones, ts_global)
+validar()
+execute()
+
+
