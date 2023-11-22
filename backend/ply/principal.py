@@ -239,5 +239,5 @@ turu = ExpresionIdentificador("forusu")
 ts_global.agregar(TS.Simbolo("forusu", TS.TIPO_DATO.__bool__, False))
 sys.stdout = open(os.devnull, 'w') 
 
-
+execute()
 
