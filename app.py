@@ -19,7 +19,7 @@ def guardar_texto():
 @app.route('/execute_code')
 def execute_code():
     try:
-        result = subprocess.check_output(['python', 'backend/ply/principal.py'], universal_newlines=True)
+        result = subprocess.check_output(['python', 'backend/ply/execute.py'], universal_newlines=True)
         return jsonify({'mensaje': result})
     except Exception as e:
         return jsonify({'mensaje': f'Error: {str(e)}'})

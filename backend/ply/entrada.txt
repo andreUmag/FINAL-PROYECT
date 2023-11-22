@@ -1,22 +1,7 @@
-funcao msg(){
-    aver("Prueba de funciones");
-}
-
-
-funcao suma(C, D){
+   funcao suma(a, b){
 numerito resultado;
-resultado = C + D;
-aver("El resultado de la suma es: ");
+resultado = a + b;
 aver(resultado);
 }
 
-funcao producto(R, P){
-  numerito resultado2;
-  resultado2 = R*P;
-  aver("El resultado del producto es: ");
-  aver(resultado2);
-}
-
-msg();
-suma(3, 9);
-producto(3, 3);
+suma(10, 5);

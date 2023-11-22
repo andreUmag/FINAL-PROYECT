@@ -167,6 +167,7 @@ def p_instruccion_definicion(t):
     "definicion_instr   : NUMERITO ID PTCOMA"
     t[0] = Definicion(t[2])
 
+# def p_definition_bool(t):
 
 def p_asignacion_instr(t):
     "asignacion_instr   : ID IGUAL expresion_numerica PTCOMA"
