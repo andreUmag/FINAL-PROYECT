@@ -1,25 +1,24 @@
+numerito a;
+numerito b;
 
 
-funcao msg(){
 
-    aver("Prueba de funciones");
+
+aver("Hola mundo");
+funcao msg(b){
+    aver(b);
+    aver("hola dentro de la funcion");
 }
+aver(a);
 
 
-funcao suma(C, D){
+
+funcao suma(a, b){
 numerito resultado;
-resultado = C + D;
-aver("El resultado de la suma es: ");
+resultado = a + b;
 aver(resultado);
 }
-
-funcao producto(R, P){
-  numerito resultado2;
-  resultado2 = R*P;
-  aver("El resultado del producto es: ");
-  aver(resultado2);
-}
-
-msg();
-suma(3, 9);
-producto(3, 3);
+a=10;
+b=8;
+suma(a, b);
+aver(resultado);

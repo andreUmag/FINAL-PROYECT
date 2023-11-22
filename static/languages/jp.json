@@ -9,5 +9,6 @@
     "interpreter": "インタプリタ",
     "web": "ウェブ",
     "execute": "実行",
-    "validate": "検証する"
+    "validate": "検証する",
+    "send": "送信"
 }

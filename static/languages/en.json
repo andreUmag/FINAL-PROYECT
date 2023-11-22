@@ -9,5 +9,6 @@
     "interpreter": "Interpreter",
     "web": "Web",
     "execute": "Execute",
-    "validate": "Validate"
+    "validate": "Validate",
+    "send": "Send"
 }
