@@ -47,13 +47,22 @@ class CallFuncao(Instruccion):
     Recibe como parámetro el nombre del identificador a definir
     """
 
-    def __init__(self, id):
+    def __init__(self, id, parametros):
         self.id = id
+        if isinstance(parametros, str):
+            self.parametros = parametros.split(",")
+        else:
+            self.parametros = parametros
+        
 
 class DefinicionFuncao(Instruccion):
     def __init__(self, id, parametros, instrucciones):
         self.id = id
-        self.parametros = parametros
+        if isinstance(parametros, str):
+            self.parametros = parametros.split(",")
+        else:
+            # Si parametros no es una cadena, podría manejarlo de otra manera según tus necesidades.
+            self.parametros = parametros
         self.instrucciones = instrucciones
 
 

@@ -225,7 +225,7 @@ def p_call_funcao(t):
     call_funcao_instr : ID PARIZQ PARDER PTCOMA
                       | ID PARIZQ parametros PARDER PTCOMA
     """
-    t[0] = CallFuncao(t[1])
+    t[0] = CallFuncao(t[1], t[3] if len(t) > 4 else [])
 
 def p_expresion(t):
     """expresion : expresion_numerica

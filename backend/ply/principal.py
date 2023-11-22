@@ -15,6 +15,10 @@ def procesar_definicion(instr, ts):
 def procesar_call_funcao(instr, ts):
     if instr.id in ts.simbolos:
         funcion = ts.obtener(instr.id)
+        if len(funcion.parametros) != 0:
+            for indice, i in enumerate(instr.parametros):
+                val = resolver_expresion(i, ts)
+                ts.obtener(funcion.parametros[indice]).valor = val
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
         procesar_instrucciones(funcion.valor, ts_local)
     else:
@@ -22,6 +26,8 @@ def procesar_call_funcao(instr, ts):
     
 def procesar_definicion_funcion(instr, ts):
     simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.function, instr.instrucciones, instr.parametros)
+    for param in instr.parametros:
+        ts.agregar(TS.Simbolo(param, TS.TIPO_DATO.numerito, 0))
     ts.agregar(simbolo)
 
 def procesar_asignacion(instr, ts):
@@ -72,6 +78,14 @@ def procesar_acto_mentre(instr, ts):
         if not resolver_expresion_booleana(instr.exp_logica, ts):
             break
 
+def resolver_expresion(exp, ts):
+    if isinstance(exp, ExpresionNumerica):
+        return resolver_expresion_aritmetica(exp, ts)
+    elif isinstance(exp, ExpresionCadena):
+        return resolver_cadena(exp, ts)
+    elif isinstance(exp, ExpresionBooleana):
+        return resolver_expresion_booleana(exp, ts)
+    
 
 def resolver_cadena(expCad, ts):
     if isinstance(expCad, ExpresionConcatenar):
