@@ -23,6 +23,11 @@ def execute_code():
         return jsonify({'mensaje': result})
     except Exception as e:
         return jsonify({'mensaje': f'Error: {str(e)}'})
+    
+@app.route('/validate_code')
+def validate_code():
+        result = subprocess.check_output(['python', 'backend/ply/validate.py'], universal_newlines=True)
+        return jsonify({'mensaje': result})
 
 if __name__ == '__main__':
     app.run(debug=True)

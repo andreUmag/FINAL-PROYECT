@@ -1,7 +1,3 @@
-   funcao suma(a, b){
-numerito resultado;
-resultado = a + b;
-aver(resultado);
-}
-
-suma(10, 5);
+ numerito a;
+a = 5;
+aver(a);
