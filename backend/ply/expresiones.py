@@ -65,6 +65,10 @@ class ExpresionCadena:
     """
     Esta clase representa una Expresión de tipo cadena.
     """
+    
+    def __init__(self, val=""):
+            self.val = val
+
 
 
 class ExpresionConcatenar(ExpresionCadena):

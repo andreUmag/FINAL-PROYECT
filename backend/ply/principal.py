@@ -7,6 +7,8 @@ import sys
 
 
 def procesar_aver(instr, ts):
+    if isinstance(instr, ExpresionDobleComilla):
+        print("> ", resolver_cadena(instr.expCadena, ts))
     print("> ", resolver_cadena(instr.cad, ts))
 
 
@@ -17,6 +19,17 @@ def procesar_definicion(instr, ts):
 def procesar_definicionBool(instr, ts):
     simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.bool, True)
     ts.agregar(simbolo)
+
+def procesar_definicionString(instr, ts):
+    simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.string, "")
+    ts.agregar(simbolo)
+
+def procesar_asignacion_string(instr, ts):
+    val = instr.expCadena.val
+
+    
+    simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.string, val)
+    ts.actualizar(simbolo)
 
 def procesar_AsignacionBool(instr, ts):
     val = instr.bool
@@ -54,7 +67,7 @@ def procesar_mentre(instr, ts):
         procesar_instrucciones(instr.instrucciones, ts_local)
 
 
-def procesar_chi(instr, ts):
+def procesar_si(instr, ts):
     val = resolver_expreision_logica(instr.expLogica, ts)
     if val:
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
@@ -63,7 +76,7 @@ def procesar_chi(instr, ts):
 
 
 
-def procesar_chi_chinop(instr, ts):
+def procesar_si_sinop(instr, ts):
     val = resolver_expreision_logica(instr.expLogica, ts)
     if val:
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
@@ -110,6 +123,8 @@ def resolver_cadena(expCad, ts):
         return str(resolver_expresion_aritmetica(expCad.exp, ts))
     elif isinstance(expCad, ExpresionCadenaBooleana):
         return str(resolver_expresion_booleana(expCad.exp, ts))
+    elif isinstance(expCad, ExpresionCadena):
+        return expCad.val
     elif isinstance(
         expCad, ExpresionIdentificador
     ):  # Agregar manejo para identificadores
@@ -202,14 +217,18 @@ def procesar_instrucciones(instrucciones, ts):
             procesar_call_funcao(instr, ts)
         elif isinstance(instr, Asignacion):
             procesar_asignacion(instr, ts)
+        elif isinstance(instr, DefinicionString):
+            procesar_definicionString(instr, ts)
+        elif isinstance(instr, AsignacionString):
+            procesar_asignacion_string(instr, ts)
         elif isinstance(instr, AsignacionBool):
             procesar_AsignacionBool(instr, ts)
         elif isinstance(instr, mentre):
             procesar_mentre(instr, ts)
-        elif isinstance(instr, chi):
-            procesar_chi(instr, ts)
-        elif isinstance(instr, ChiChinop):
-            procesar_chi_chinop(instr, ts)
+        elif isinstance(instr, si):
+            procesar_si(instr, ts)
+        elif isinstance(instr, sisinop):
+            procesar_si_sinop(instr, ts)
         elif isinstance(instr, untuk):
             procesar_untuk(instr, ts)
         elif isinstance(instr, ActoMentre):

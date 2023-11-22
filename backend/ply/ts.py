@@ -5,6 +5,7 @@ class TIPO_DATO(Enum):
     numerito = 1
     function = 2
     bool = 3
+    string = 4
 
 
 class Simbolo:

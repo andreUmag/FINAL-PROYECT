@@ -3,8 +3,8 @@ reservadas = {
     "aver": "AVER",
     "mentre": "MENTRE",
     "acto": "ACTO",
-    "chi": "CHI",
-    "chinop": "CHINOP",
+    "si": "SI",
+    "sinop": "SINOP",
     "untuk": "UNTUK",
     "hasta": "HASTA",
     "funcao": "FUNCAO",
@@ -12,6 +12,7 @@ reservadas = {
     "bool": "BOOL",
     "sisas": "SISAS",
     "nonas": "NONAS",
+    "string": "STRING",
 }
 
 tokens = [
@@ -153,8 +154,8 @@ def p_instruccion(t):
     | definicion_instr
     | asignacion_instr
     | mentre_instr
-    | chi_instr
-    | chi_chinop_instr
+    | si_instr
+    | si_sinop_instr
     | untuk_instr
     | acto_mentre_instr
     | call_funcao_instr"""
@@ -175,6 +176,16 @@ def p_definition_bool(t):
     """
     t[0] = DefinicionBool(t[2])
 
+def p_definition_string(t):
+    """definicion_instr   : STRING ID PTCOMA
+    """
+    t[0] = DefinicionString(t[2])
+
+def p_asignacion_string(t):
+    """asignacion_instr   : ID IGUAL expresion_cadena PTCOMA
+    """
+    t[0] = AsignacionString(t[1], t[3])
+
 def p_asignacion_instr(t):
     """
     asignacion_instr   : ID IGUAL expresion_numerica PTCOMA
@@ -194,14 +205,14 @@ def p_mentre_instr(t):
     t[0] = mentre(t[3], t[6])
 
 
-def p_chi_instr(t):
-    "chi_instr           : CHI PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER"
-    t[0] = chi(t[3], t[6])
+def p_si_instr(t):
+    "si_instr           : SI PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER"
+    t[0] = si(t[3], t[6])
 
 
-def p_chi_chinop_instr(t):
-    "chi_chinop_instr      : CHI PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER CHINOP LLAVIZQ instrucciones LLAVDER"
-    t[0] = ChiChinop(t[3], t[6], t[10])
+def p_si_sinop_instr(t):
+    "si_sinop_instr      : SI PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER SINOP LLAVIZQ instrucciones LLAVDER"
+    t[0] = sisinop(t[3], t[6], t[10])
 
 
 def p_untuk_instr(t):

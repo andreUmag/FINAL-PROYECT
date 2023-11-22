@@ -74,6 +74,9 @@ class DefinicionFuncao(Instruccion):
             self.parametros = parametros
         self.instrucciones = instrucciones
 
+class DefinicionString(Instruccion):
+    def __init__(self, id):
+        self.id = id
 
 class Asignacion(Instruccion):
     """
@@ -91,7 +94,12 @@ class AsignacionBool(Instruccion):
         self.id = id
         self.bool = bool
 
-class chi(Instruccion):
+class AsignacionString(Instruccion):
+    def __init__(self, id, expCadena):
+        self.id = id
+        self.expCadena = expCadena
+
+class si(Instruccion):
     """
     Esta clase representa la instrucción if.
     La instrucción if recibe como parámetro una expresión lógica y la lista
@@ -103,7 +111,7 @@ class chi(Instruccion):
         self.instrucciones = instrucciones
 
 
-class ChiChinop(Instruccion):
+class sisinop(Instruccion):
     """
     Esta clase representa la instrucción if-else.
     La instrucción if-else recibe como parámetro una expresión lógica y la lista
