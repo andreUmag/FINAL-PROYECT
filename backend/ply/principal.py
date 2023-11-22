@@ -14,6 +14,15 @@ def procesar_definicion(instr, ts):
     simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.numerito, 0)
     ts.agregar(simbolo)
 
+def procesar_definicionBool(instr, ts):
+    simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.bool, True)
+    ts.agregar(simbolo)
+
+def procesar_AsignacionBool(instr, ts):
+    val = instr.bool
+    simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.bool, val)
+    ts.actualizar(simbolo)
+
 def procesar_call_funcao(instr, ts):
     if instr.id in ts.simbolos:
         funcion = ts.obtener(instr.id)
@@ -187,10 +196,14 @@ def procesar_instrucciones(instrucciones, ts):
             procesar_definicion(instr, ts)
         elif isinstance(instr, DefinicionFuncao):
             procesar_definicion_funcion(instr, ts)
+        elif isinstance(instr, DefinicionBool):
+            procesar_definicionBool(instr, ts)
         elif isinstance(instr, CallFuncao):
             procesar_call_funcao(instr, ts)
         elif isinstance(instr, Asignacion):
             procesar_asignacion(instr, ts)
+        elif isinstance(instr, AsignacionBool):
+            procesar_AsignacionBool(instr, ts)
         elif isinstance(instr, mentre):
             procesar_mentre(instr, ts)
         elif isinstance(instr, chi):
@@ -239,5 +252,5 @@ turu = ExpresionIdentificador("forusu")
 ts_global.agregar(TS.Simbolo("forusu", TS.TIPO_DATO.__bool__, False))
 sys.stdout = open(os.devnull, 'w') 
 
-
+execute()
 

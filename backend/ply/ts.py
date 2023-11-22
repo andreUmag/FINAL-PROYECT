@@ -4,6 +4,7 @@ from enum import Enum
 class TIPO_DATO(Enum):
     numerito = 1
     function = 2
+    bool = 3
 
 
 class Simbolo:

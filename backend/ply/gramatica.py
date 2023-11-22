@@ -9,6 +9,9 @@ reservadas = {
     "hasta": "HASTA",
     "funcao": "FUNCAO",
     "coma": "COMA",
+    "bool": "BOOL",
+    "sisas": "SISAS",
+    "nonas": "NONAS",
 }
 
 tokens = [
@@ -167,11 +170,23 @@ def p_instruccion_definicion(t):
     "definicion_instr   : NUMERITO ID PTCOMA"
     t[0] = Definicion(t[2])
 
-# def p_definition_bool(t):
+def p_definition_bool(t):
+    """definicion_instr   : BOOL ID PTCOMA
+    """
+    t[0] = DefinicionBool(t[2])
 
 def p_asignacion_instr(t):
-    "asignacion_instr   : ID IGUAL expresion_numerica PTCOMA"
-    t[0] = Asignacion(t[1], t[3])
+    """
+    asignacion_instr   : ID IGUAL expresion_numerica PTCOMA
+                        | ID IGUAL SISAS PTCOMA
+                        | ID IGUAL NONAS PTCOMA
+    """
+    if t[3] == "sisas":
+        t[0] = AsignacionBool(t[1], True)
+    elif t[3] == "nonas":
+        t[0] = AsignacionBool(t[1], False)
+    else:
+        t[0] = Asignacion(t[1], t[3])
 
 
 def p_mentre_instr(t):

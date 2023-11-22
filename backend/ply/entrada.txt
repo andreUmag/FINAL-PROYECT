@@ -1,3 +1,13 @@
  numerito a;
 a = 5;
 aver(a);
+
+bool c;
+bool b;
+c = sisas;
+b = nonas;
+chi(c == b){
+  aver("Sisas");
+}chinop{
+  aver("nonas");
+}

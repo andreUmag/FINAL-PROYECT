@@ -41,6 +41,15 @@ class Definicion(Instruccion):
     def __init__(self, id):
         self.id = id
 
+class DefinicionBool(Instruccion):
+    """
+    Esta clase representa la instrucción de definición de variables.
+    Recibe como parámetro el nombre del identificador a definir
+    """
+
+    def __init__(self, id):
+        self.id = id
+
 class CallFuncao(Instruccion):
     """
     Esta clase representa la instrucción de llamada a funciones.
@@ -76,6 +85,11 @@ class Asignacion(Instruccion):
         self.id = id
         self.expNumerica = expNumerica
 
+class AsignacionBool(Instruccion):
+
+    def __init__(self, id, bool):
+        self.id = id
+        self.bool = bool
 
 class chi(Instruccion):
     """
