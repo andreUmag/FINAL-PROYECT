@@ -1,0 +1,24 @@
+  funcao mensaje(){
+ aver("Prueba de funciones");
+}
+
+funcao suma(a, b){
+ numerito resultado;
+ resultado = a + b;
+ chi(resultado>10){
+aver("El resultado de la suma es: " & resultado);
+  aver("El resultado es mayor a 10");
+ }chinop{
+  aver("El resultado de la suma es: ");
+  aver(resultado);
+ }
+}
+
+funcao multiplicacion(a, b){
+ numerito resultado;
+ resultado = a * b;
+ aver("El resultado de la multiplicacion es: ");
+ aver(resultado);
+}
+
+suma(10, 5);
