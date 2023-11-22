@@ -1,0 +1,17 @@
+{
+    "en": {
+        "send" : "The code has been sent to the interpreter.",
+        "execute" : "The code has been executed by the interpreter.",
+        "validate" : "The code has been validated by the interpreter."
+    },
+    "es": {
+        "send" : "El código ha sido enviado al intérprete.",
+        "execute": "El código ha sido ejecutado por el intérprete.",
+        "validate" : "El código ha sido validado por el intérprete."
+    },
+    "jp": {
+        "send" : "コードはインタプリタに送信されました。",
+        "execute": "コードはインタプリタによって実行されています。",
+        "validate" : "コードはインタプリタによって検証されました。"
+    }
+}

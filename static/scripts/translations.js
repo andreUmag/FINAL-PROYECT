@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#web").textContent = data.web;
         document.querySelector("#execute").textContent = data.execute;
         document.querySelector("#validate").textContent = data.validate;
+        document.querySelector("#send").textContent = data.send;
 
         const languageOptions = data["languages-option"];
         document.querySelectorAll(".language-list a").forEach((link) => {
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
           detail: lang,
         });
         document.dispatchEvent(languageChangeEvent);
+        document.documentElement.lang = lang;
       });
   }
 
